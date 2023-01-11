@@ -13,11 +13,11 @@ const client = new line.Client(config);
 
 // create Express app
 // about Express itself: https://expressjs.com/
-const app = express('https://github.com/EliotDu');
+const app = express('');
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
-app.post('/example-line-bot', line.middleware(config), (req, res) => {
+app.post('/', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
