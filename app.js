@@ -23,8 +23,17 @@ const client = new line.Client(config);
 // about Express itself: https://expressjs.com/
 const app = express();
 
+
+app.set("view engine", "ejs");
+
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
+
+app.get("/", (req, res) => {
+	// res.send(`<h2>你好</h2>`)
+	res.render("main", { name: "Jie" });
+});
+
 app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
