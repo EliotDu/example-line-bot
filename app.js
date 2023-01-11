@@ -48,11 +48,12 @@ async function handleEvent(event) {
   });
 
   // create a echoing text message
-  const echo = { type: 'text',text: completion.data.choices[0].text  };
+  const echo = { type: 'text', text: completion.data.choices[0].text };
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
+
 
 // listen on port
 const port = process.env.PORT || 3000;
